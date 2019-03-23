@@ -1,0 +1,84 @@
+
+
+/* JUNOLOJI MATCHING GROUP CSS */
+
+
+body{
+
+  background-color: #f7f7f8;
+
+}
+
+.bg-dark{
+
+  background-color: #4f34a0 !important;
+
+}
+
+ .white-section{
+
+   background-color: #FFF;
+    padding: 30px 25px 60px 20px;
+    -webkit-box-shadow: 0px 1px 1px 0px #dfdfdf;
+    box-shadow: 0px 1px 1px 0px #dfdfdf;
+    border-radius: 3px;
+    margin-top: 20px;
+
+
+ }
+
+
+
+.form-con{
+
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+ .btn-form-ekle{
+
+   padding-left: 40px;
+   padding-right: 40px;
+   border-color: #4f34a0;
+   color: #4f34a0;
+
+ }
+
+
+ .btn-form-ekle:hover{
+
+
+   border-color: #4f34a0;
+   background-color: #4f34a0;
+
+ }
+
+.form-margin .row{
+
+  margin-top: 15px;
+
+}
+
+
+.btn-kaydet{
+
+  background-color: #4f34a0;
+
+}
+
+
+.btn-kaydet:hover{
+
+  background-color:#674abd;
+
+}
+
+
+.list-group-item.active {
+
+  background-color: #674abd;
+  border-color: #674abd;
+
+}

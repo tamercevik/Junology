@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-md-6" style="background-color:lightblue">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="white-section">
+          <div style="margin:auto; width:80%" class="form-margin">
+            <div class="row">
+              <div class="col">
+                <h5 class="text-center">Match Group Ekle</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <span
+                      class="input-group-text"
+                      id="inputGroup-sizing-default"
+                      >İsim</span
+                    >
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default"
+                    name="txtGroupName"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-form-ekle"
+                  (click)="addGroup(txtGroupName.text)"
+                >
+                  Ekle
+                </button>
+              </div>
+            </div>
+            <app-matchingGroups></app-matchingGroups>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" style="background-color:lightgreen">
+    <div class="white-section">
+      <div style="margin:auto; width:80%" class="form-margin">
+        <div class="row">
+          <div class="col">
+            <h5 class="text-center">Kural Ekle</h5>
+          </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+          <div class="col-lg-6">
+            <select
+              class="selectpicker mt-2"
+              title="1. Gezegen"
+              data-width="100%"
+            >
+              <option>Dünya</option>
+              <option>Mars</option>
+              <option>Venus</option>
+            </select>
+          </div>
+          <div class="col-lg-6">
+            <select
+              class="selectpicker mt-2"
+              title="2. Gezegen"
+              data-width="100%"
+            >
+              <option>Dünya</option>
+              <option>Mars</option>
+              <option>Venus</option>
+            </select>
+          </div>
+        </div>
+        <!-- end row -->
+        <div class="row  mt-4">
+          <div class="col-lg-6">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Açı</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Tolerans</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row">
+          <div class="col">
+            <button
+              type="button"
+              class="btn btn-secondary btn-block btn-kaydet"
+            >
+              Kaydet
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
