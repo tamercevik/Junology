@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   addGroup(text: any) {
 
 
-    console.log("selected matching groupId: "+text  );
+    console.log("selected matching groupId: "+ text  );
   
   };
 
