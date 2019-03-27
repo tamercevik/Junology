@@ -10,5 +10,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
+<<<<<<< HEAD
+  ngOnInit() {
+  }
+
+  addGroup() {
+
+
+    console.log("selected matching groupId: "+ document.getElementById("txtGroupName"));
+  
+  };
+=======
+>>>>>>> dec78bcafcf2638c4e1da7528e4549b6173771ce
 
 }
