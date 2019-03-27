@@ -12,10 +12,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  addGroup(text: any) {
+  addGroup() {
 
 
-    console.log("selected matching groupId: "+ text  );
+    console.log("selected matching groupId: "+ document.getElementById("txtGroupName"));
   
   };
 
