@@ -14,7 +14,7 @@
           class="form-control"
           aria-label="Default"
           aria-describedby="inputGroup-sizing-default"
-          ng-model="groupName"
+          [(ngModel)]="groupName"
         />
       </div>
     </div>
@@ -22,24 +22,10 @@
       <button
         type="button"
         class="btn btn-outline-secondary btn-form-ekle"
-        ng-click="addGroup()"
+      (click)="addGroup()"
       >
         Ekle
       </button>
     </div>
   </div>
 </form>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
-    <script type="text/javascript">
-        var app = angular.module('MyApp', [])
-        app.controller('MyController', function ($scope, $window) {
-            $scope.addGroup = function () {
-                if (typeof ($scope.groupName) == "undefined" || $scope.groupName == "") {
-                    $window.alert("Please enter your name!");
-                    return;
-                }
-                $window.alert("Hello " + $scope.groupName);
-            }
-        });
-    </script>

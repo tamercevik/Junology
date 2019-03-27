@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-addMatchingGroup',
-  templateUrl: './addMatchingGroup.component.html',
-  styleUrls: ['./addMatchingGroup.component.css']
+  selector: "app-addMatchingGroup",
+  templateUrl: "./addMatchingGroup.component.html",
+  styleUrls: ["./addMatchingGroup.component.css"]
 })
 export class AddMatchingGroupComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  groupName: string;
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  addGroup() {
+
+    alert("grup adı :  "+this.groupName);
   }
-
-  addGroup(){
-
-    alert("added");
-  }
-
 }
