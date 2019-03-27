@@ -28,8 +28,6 @@ export class MatchingGroupsComponent implements OnInit {
   }
 
   selectItem(id: any) {
-
-
     console.log("selected matching groupId: "+id  );
     this.matchingGroups.forEach(element => {
       if (element.matchingGroupId == id) {
