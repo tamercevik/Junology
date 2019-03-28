@@ -67,9 +67,6 @@ export class HomeComponent implements OnInit {
     return desc;
   }
 
-
-
-
   addMatchingRule() {
 
     console.log(this.selectedGroupId)
@@ -85,9 +82,6 @@ export class HomeComponent implements OnInit {
       Angle: this.angle,
       Tolerance: this.tolerance
     }
-
-
-
 
     this.matchingGroupSrv.addMatchingRule(newMatchingRule).subscribe(resp => {
       this.getMatchingRules();
