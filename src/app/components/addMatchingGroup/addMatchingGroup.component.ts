@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MatchingGroupsService } from 'src/app/services/matching-groups/matching-groups.service';
 
 @Component({
   selector: "app-addMatchingGroup",
@@ -6,14 +7,24 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./addMatchingGroup.component.css"]
 })
 export class AddMatchingGroupComponent implements OnInit {
-  constructor() {}
+  constructor(public matchingGroupSrv:MatchingGroupsService) { }
 
   groupName: string;
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addGroup() {
 
-    alert("grup adı :  "+this.groupName);
+    let groupObj: any = {
+      "GroupName": this.groupName,
+      "Description": this.groupName
+    };
+
+    this.matchingGroupSrv.create(groupObj).subscribe(resp=>{
+      alert("iş tamam");
+    })
+
   }
+
 }
+

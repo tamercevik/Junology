@@ -1,0 +1,1 @@
+export const CONST_BaseServiceURL="https://wcf.stratus.com.tr:8091/api/api/";

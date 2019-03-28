@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { MatchingRule } from 'src/app/models/matching-Rule';
+import { CONST_BaseServiceURL } from 'src/app/ServiceConstants';
 
 @Component({
   selector: 'app-matchingRules',
@@ -9,8 +10,8 @@ import { MatchingRule } from 'src/app/models/matching-Rule';
 })
 
 export class MatchingRulesComponent implements OnInit {
-  
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
   matchingRules: MatchingRule[] = [];
 
@@ -22,7 +23,7 @@ export class MatchingRulesComponent implements OnInit {
 
   getMatchingRules() {
     return this.http.get<MatchingRule[]>(
-      "https://localhost:44322/api/matchingrules"
+      CONST_BaseServiceURL + "matchingrules"
     );
   }
 

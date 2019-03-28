@@ -1,21 +1,16 @@
-<form>
-  <div class="row"  ng-app="MyApp" ng-controller="MyController">
+  <div class="row">
     <div class="col-lg-9">
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <span
             class="input-group-text"
-            id="inputGroup-sizing-default"
-            >İsim</span
+            id="inputGroup-sizing-default">İsim</span
           >
         </div>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Default"
-          aria-describedby="inputGroup-sizing-default"
-          [(ngModel)]="groupName"
-        />
+        <input type="text" [(ngModel)]="groupName" 
+        class="form-control"
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default" />
       </div>
     </div>
     <div class="col-lg-3">
@@ -28,4 +23,3 @@
       </button>
     </div>
   </div>
-</form>

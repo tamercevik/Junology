@@ -1,22 +1,24 @@
-<div class="row">
-  <table border=1>
-    <tr border=1>
-      <th>RuleId</th>
-      <th>MatchingGroupId</th>
-      <th>PrimaryPlanetId</th>
-      <th>SecondaryPlanetId</th>
-      <th>Angle</th>
-      <th>Tolerance</th>
-    </tr>
-    <tr  *ngFor="let item of matchingRules"> 
-      <td>{{item.ruleId}}
-      </td>
-      <td>{{item.matchingGroupId}}
-      </td>
-      <td>{{item.primaryPlanetId}}</td>
-      <td>{{item.secondaryPlanetId}}</td>
-      <td>{{item.angle}}</td>
-      <td>{{item.tolerance}}</td>
-    </tr>
-  </table>
+<div class="table table-striped">
+  <div class="row">
+    <table border=1>
+      <tr border=1>
+        <th>RuleId</th>
+        <th>MatchingGroupId</th>
+        <th>PrimaryPlanetId</th>
+        <th>SecondaryPlanetId</th>
+        <th>Angle</th>
+        <th>Tolerance</th>
+      </tr>
+      <tr *ngFor="let item of matchingRules">
+        <td>{{item.ruleId}}
+        </td>
+        <td>{{item.matchingGroupId}}
+        </td>
+        <td>{{item.primaryPlanetId}}</td>
+        <td>{{item.secondaryPlanetId}}</td>
+        <td>{{item.angle}}</td>
+        <td>{{item.tolerance}}</td>
+      </tr>
+    </table>
+  </div>
 </div>

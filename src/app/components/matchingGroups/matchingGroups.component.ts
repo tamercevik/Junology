@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { MatchingGroup } from "src/app/models/matching-Group";
+import { MatchingGroupsService } from 'src/app/services/matching-groups/matching-groups.service';
 
 @Component({
   selector: "app-matchingGroups",
@@ -8,23 +8,25 @@ import { MatchingGroup } from "src/app/models/matching-Group";
   styleUrls: ["./matchingGroups.component.css"]
 })
 export class MatchingGroupsComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(public matchingGroupsSrv:MatchingGroupsService) {
 
-  matchingGroups: MatchingGroup[] = [];
+  }
+
+  matchingGroups: any = [];
 
   ngOnInit() {
-    this.getMatchingGroups().subscribe(data => {
-      this.matchingGroups = data;
+    this.getMatchingGroups();
+  }
+
+  getMatchingGroups() {
+      console.log("veri çağrılıyor");
+      return this.matchingGroupsSrv.getAll().subscribe(resp =>{
+      console.log("veri geldi");
+      this.matchingGroups = resp;
       if (this.matchingGroups && this.matchingGroups.length > 0) {
         this.matchingGroups[0].selected = true;
       }
     });
-  }
-
-  getMatchingGroups() {
-    return this.http.get<MatchingGroup[]>(
-      "https://localhost:44322/api/matchingGroups"
-    );
   }
 
   selectItem(id: any) {
