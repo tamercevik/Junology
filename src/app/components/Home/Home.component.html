@@ -1,4 +1,4 @@
-<div class="row" style="background-color: lightgrey;min-height: 100%;height: 100%;">
+<div class="row" style="min-height: 100%;height: 100%;">
   <div class="col-md-6">
     <div class="row">
       <div class="col-lg-12">
@@ -6,31 +6,69 @@
           <div style="margin:auto; width:80%" class="form-margin">
             <div class="row">
               <div class="col">
-                <h5 class="text-center">Match Group Ekle</h5>
+                <h5 class="text-center">Add new matching group</h5>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-9">
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">İsim</span>
+                    <span
+                      class="input-group-text"
+                      id="inputGroup-sizing-default"
+                      >Name</span
+                    >
                   </div>
-                  <input type="text" [(ngModel)]="groupName" class="form-control" aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default" />
+                  <input
+                    type="text"
+                    [(ngModel)]="groupName"
+                    class="form-control"
+                    aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
                 </div>
               </div>
               <div class="col-lg-3">
-                <button type="button" class="btn btn-outline-secondary btn-form-ekle" (click)="addGroup()">
-                  Ekle
+                <button
+                  type="button"
+                  style="width:100%"
+                  class="btn btn-outline-secondary btn-form-ekle"
+                  (click)="addGroup()"
+                >
+                  Add
                 </button>
               </div>
             </div>
+            <div class="row" style="margin-top:20px;">
+              <div class="col">
+                <h5 class="text-center">Matching groups</h5>
+              </div>
+            </div>
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col">
                 <div class="list-group" *ngFor="let item of matchingGroups">
-                  <a href="#" class="list-group-item list-group-item-action" [ngClass]="{'active': item.selected}"
-                    (click)="selectItem(item.matchingGroupId)">{{item.description}}</a>
-                    
+                  <div class="row">
+                    <div class="col-lg-9">
+                      <a
+                        href="#"
+                        class="list-group-item list-group-item-action"
+                        [ngClass]="{ active: item.selected }"
+                        style="padding-top:6px !important;padding-bottom:6px !important"
+                        (click)="selectItem(item.matchingGroupId)"
+                        >{{ item.description }}</a
+                      >
+                    </div>
+
+                    <div class="col-lg-3">
+                      <a
+                        href="#"
+                        class="btn btn-outline-secondary btn-form-ekle text-center"
+                        style="width:100%"
+                        (click)="removeMatchingGroup(item.matchingGroupId)"
+                        >Remove</a
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -44,66 +82,109 @@
       <div style="margin:auto; width:80%" class="form-margin">
         <div class="row">
           <div class="col">
-            <h5 class="text-center">Yeni Kural Ekle</h5>
+            <h5 class="text-center">Add new matching rule</h5>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <select class="form-control mt-2" data-width="100%" [(ngModel)]="selectedFirstPlanetId">
-                <option [ngValue]="null">1. Gezegen</option>
-              <option [value]="item.id"  *ngFor="let item of planets">{{item.description}}</option>
+            <select
+              class="form-control mt-2"
+              data-width="100%"
+              [(ngModel)]="selectedFirstPlanetId"
+              title="1. Gezegen"
+            >
+              <option [value]="item.id" *ngFor="let item of planets">{{
+                item.description
+              }}</option>
             </select>
           </div>
           <div class="col-lg-6">
-   
-              <select class="form-control mt-2" data-width="100%" [(ngModel)]="selectedSecondPlanetId">
-                <option [value]="item.id" *ngFor="let item of planets">{{item.description}}</option>
-                </select>
+            <select
+              class="form-control mt-2"
+              data-width="100%"
+              [(ngModel)]="selectedSecondPlanetId"
+              title="2. Gezegen"
+            >
+              <option [value]="item.id" *ngFor="let item of planets">{{
+                item.description
+              }}</option>
+            </select>
           </div>
         </div>
         <div class="row  mt-4">
           <div class="col-lg-6">
             <div class="input-group mb-2">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Açı</span>
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Angle</span
+                >
               </div>
-              <input [(ngModel)]="angle"  type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              <input
+                [(ngModel)]="angle"
+                type="text"
+                class="form-control"
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+              />
             </div>
           </div>
           <div class="col-lg-6">
             <div class="input-group mb-2">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Tolerans</span>
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Tolerance</span
+                >
               </div>
-              <input [(ngModel)]="tolerance"  type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              <input
+                [(ngModel)]="tolerance"
+                type="text"
+                class="form-control"
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+              />
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <button (click)="addMatchingRule()" type="button" class="btn btn-secondary btn-block btn-kaydet">Kaydet</button>
+            <button
+              (click)="addMatchingRule()"
+              type="button"
+              class="btn btn-secondary btn-block btn-kaydet"
+            >
+              Save matching rule
+            </button>
           </div>
         </div>
-        <div class="table table-striped">
-          <div class="row">
-            <table border=1>
-              <tr border=1>
+
+        <div class="table-responsive">
+          <div class="table table-striped" style="margin-top:20px">
+            <table
+              border="1"
+              style="margin:auto;"
+              *ngIf="matchingRules.length > 0"
+            >
+              <tr border="1" style="color:#ffffff;background-color: #4f34a0">
                 <th>RuleId</th>
-                <th>MatchingGroupId</th>
-                <th>PrimaryPlanetId</th>
-                <th>SecondaryPlanetId</th>
+                <th>Group</th>
+                <th>1. Planet</th>
+                <th>2.Planet</th>
                 <th>Angle</th>
                 <th>Tolerance</th>
+                <th></th>
               </tr>
               <tr *ngFor="let item of matchingRules">
-                <td>{{item.ruleId}}
+                <td>{{ item.ruleId }}</td>
+                <td>{{ getmatchingGroupNameById(item.matchingGroupId) }}</td>
+                <td>{{ getPlanetNameById(item.primaryPlanetId) }}</td>
+                <td>{{ getPlanetNameBySecondById(item.secondaryPlanetId) }}</td>
+                <td>{{ item.angle }}</td>
+                <td>{{ item.tolerance }}</td>
+                <td>
+                  <a href="#" (click)="removeMatchingRule(item.ruleId)"
+                    >Remove</a
+                  >
                 </td>
-                <td>{{getmatchingGroupNameById(item.matchingGroupId)}}
-                </td>
-                <td>{{getPlanetNameById(item.primaryPlanetId)}}</td>
-                <td>{{getPlanetNameBySecondyId(item.secondaryPlanetId)}}</td>
-                <td>{{item.angle}}</td>
-                <td>{{item.tolerance}}</td>
               </tr>
             </table>
           </div>

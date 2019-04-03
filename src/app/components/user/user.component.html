@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <div class="row" style="min-height: 100%;height: 100%;">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="white-section">
+            <div style="margin:auto; width:80%" class="form-margin">
+              <div class="row">
+                <div class="col">
+                  <h5 class="text-center">Add new user</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <span
+                      class="input-group-text"
+                      id="inputGroup-sizing-default"
+                      >Name</span
+                    >
+                  </div>
+                  <input
+                    type="text"
+                    [(ngModel)]="newUserName"
+                    class="form-control"
+                    aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <span
+                      class="input-group-text"
+                      id="inputGroup-sizing-default"
+                      >Date Of Birth</span
+                    >
+                  </div>
+                  <input
+                    type="date"
+                    [(ngModel)]="dateOfBirth"
+                    class="form-control"
+                    aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group mb-2">
+                  <button
+                    type="button"
+                    style="width:100%"
+                    class="btn btn-outline-secondary btn-form-ekle"
+                    (click)="addUser()"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h5 class="text-center">Users</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <span
+                      class="input-group-text"
+                      id="inputGroup-sizing-default"
+                      >Search</span
+                    >
+                  </div>
+                  <input
+                    type="text"
+                    [(ngModel)]="userName"
+                    class="form-control"
+                    aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="list-group" *ngFor="let item of users">
+                    <div class="row">
+                      <div class="col-lg-9">
+                        <a
+                          class="list-group-item list-group-item-action"
+                          [ngClass]="{ active: item.selected }"
+                          style="padding-top:6px !important;padding-bottom:6px !important"
+                          (click)="selectUser(item.id)"
+                          >{{ item.name }}</a
+                        >
+                      </div>
+
+                      <div class="col-lg-3">
+                        <a
+                          class="btn btn-outline-secondary btn-form-ekle text-center"
+                          style="width:100%"
+                          (click)="removeUser(item.id)"
+                          >Remove</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="white-section">
+        <div style="margin:auto; width:80%" class="form-margin">
+          <div class="row">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Selected User</span
+                >
+              </div>
+              <input
+                type="text"
+                [(ngModel)]="selectedUserId"
+                class="form-control"
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

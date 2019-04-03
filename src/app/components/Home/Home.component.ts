@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { MatchingGroupsService } from 'src/app/services/matching-groups/matching-groups.service';
-import { CONST_BaseServiceURL } from 'src/app/ServiceConstants';
+import { MatchingGroupsService } from "src/app/services/matching-groups/matching-groups.service";
+import { CONST_BaseServiceURL } from "src/app/ServiceConstants";
+import { MatchingGroup } from 'src/app/models/matching-Group';
 
 @Component({
   selector: "app-Home",
@@ -8,7 +9,7 @@ import { CONST_BaseServiceURL } from 'src/app/ServiceConstants';
   styleUrls: ["./Home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  constructor(public matchingGroupSrv: MatchingGroupsService) { }
+  constructor(public matchingGroupSrv: MatchingGroupsService) {}
 
   matchingGroups: any = [];
   matchingRules: any = [];
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   selectedFirstPlanetId: any;
   selectedSecondPlanetId: any;
+  selectedGroupId: any;
 
   ngOnInit() {
     this.getMatchingGroups();
@@ -26,15 +28,14 @@ export class HomeComponent implements OnInit {
   }
 
   addGroup() {
-
     let groupObj: any = {
-      "GroupName": this.groupName,
-      "Description": this.groupName
+      GroupName: this.groupName,
+      Description: this.groupName
     };
 
     this.matchingGroupSrv.create(groupObj).subscribe(resp => {
       this.getMatchingGroups();
-    })
+    });
   }
   getPlanetNameById(id: any) {
     // console.log("planet : " + JSON.stringify(this.planets));
@@ -46,9 +47,9 @@ export class HomeComponent implements OnInit {
     });
     return desc;
   }
-  getPlanetNameBySecondyId(id: any) {
+  getPlanetNameBySecondById(id: any) {
     let desc: string;
-    console.log("id :" + id + "planets : " + JSON.stringify(this.planets));
+    //console.log("id :" + id + "planets : " + JSON.stringify(this.planets));
     this.planets.forEach(element => {
       if (element.id == id) {
         desc = element.description;
@@ -68,52 +69,46 @@ export class HomeComponent implements OnInit {
   }
 
   addMatchingRule() {
-
-    console.log(this.selectedGroupId)
-    console.log(this.selectedFirstPlanetId)
-    console.log(this.selectedSecondPlanetId)
-    console.log(this.angle)
-    console.log(this.tolerance)
-
     let newMatchingRule: any = {
       MatchingGroupId: this.selectedGroupId,
       PrimaryPlanetId: this.selectedFirstPlanetId,
       SecondaryPlanetId: this.selectedSecondPlanetId,
       Angle: this.angle,
       Tolerance: this.tolerance
-    }
+    };
 
     this.matchingGroupSrv.addMatchingRule(newMatchingRule).subscribe(resp => {
       this.getMatchingRules();
-    })
-
+    });
   }
 
   getMatchingGroups() {
-    console.log("veri çağrılıyor");
+    //console.log("veri çağrılıyor");
     return this.matchingGroupSrv.getAll().subscribe(resp => {
-      console.log("veri geldi");
+      //console.log("veri geldi");
       this.matchingGroups = resp;
       if (this.matchingGroups && this.matchingGroups.length > 0) {
         // this.matchingGroups[0].selected = true;
         // this.selectedGroupId=this.matchingGroups[0].matchingGroupId;
         this.selectItem(this.matchingGroups[0].matchingGroupId);
-        console.log(this.matchingGroups[0].matchingGroupId)
+        //console.log(this.matchingGroups[0].matchingGroupId);
       }
     });
   }
 
-  selectedGroupId: any;
+
   getMatchingRules() {
-    return this.matchingGroupSrv.getMatchingRules(this.selectedGroupId).subscribe(resp => {
-      this.matchingRules = resp;
-    })
+    return this.matchingGroupSrv
+      .getMatchingRules(this.selectedGroupId)
+      .subscribe(resp => {
+        this.matchingRules = resp;
+      });
   }
 
   getPlanets() {
     return this.matchingGroupSrv.getPlanets().subscribe(resp => {
       this.planets = resp;
-    })
+    });
   }
 
   selectItem(id: any) {
@@ -129,4 +124,20 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  removeMatchingGroup(id: any) {
+    console.log("Silinecek.."+id)
+    this.matchingGroupSrv.removeMatchingGroup(id).subscribe(
+      ()=>this.getMatchingGroups(),
+      (err)=>console.log(err)
+    );
+     
+  }
+
+  removeMatchingRule(id: any) {
+    this.matchingGroupSrv.removeMatchingRule(id).subscribe(
+      ()=>this.getMatchingRules(),
+      (err)=>console.log(err)
+    );
+     
+  }
 }
